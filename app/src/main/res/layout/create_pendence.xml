@@ -7,11 +7,11 @@
     tools:context=".PendenceActivity">
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/createTitle"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:backgroundTint="@color/blue"
@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.175" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/descriptionView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -33,15 +33,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editText3"
+        app:layout_constraintStart_toEndOf="@+id/createTitle"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/createDescription"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="130dp"
         android:layout_marginBottom="92dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -54,37 +54,43 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/titleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="92dp"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="92dp"
         android:text="@string/title"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/descriptionView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintStart_toEndOf="@+id/createDescription"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/date"
+        android:id="@+id/createDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="230dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="220dp"
         android:ems="10"
-        android:hint="Enter Date"
         app:backgroundTint="@color/blue"
-        tools:layout_marginTop="230dp" />
+        android:hint="Enter Date" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerForImportance"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="370dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="290dp"
         android:drawSelectorOnTop="true"
         android:entries="@array/array_name" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="400dp"
+        android:text="@string/savebutton" />
 </RelativeLayout>

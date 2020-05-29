@@ -8,22 +8,20 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 
 public class PendenceActivity extends AppCompatActivity {
-
     DatePickerDialog picker;
     EditText eText;
     Button btnGet;
     TextView tvw;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_pendence);
+        eText=(EditText) findViewById(R.id.createDate);
         eText.setInputType(InputType.TYPE_NULL);
         eText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,12 +39,6 @@ public class PendenceActivity extends AppCompatActivity {
                             }
                         }, year, month, day);
                 picker.show();
-            }
-        });
-        btnGet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvw.setText("Selected Date: " + eText.getText());
             }
         });
     }
