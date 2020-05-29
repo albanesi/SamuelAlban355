@@ -1,10 +1,3 @@
 <resources>
-    <string name="app_name">Neue Pendenz erstellen</string>
-    <string name="title">Title</string>
-    <string name="description">Description</string>
-    <string-array name="array_name">
-        <item>Niedrig</item>
-        <item>Normal</item>
-        <item>Hoch</item>
-    </string-array>
+    <string name="app_name">355uek</string>
 </resources>
