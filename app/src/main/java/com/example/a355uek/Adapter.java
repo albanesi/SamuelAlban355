@@ -36,6 +36,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     String title = data.get(position).getTitle();
     String description = data.get(position).getDescription();
     String important = data.get(position).getImportance();
+
     holder.textTitle.setText(title);
     holder.textdate.setText("1");
     holder.textDescription.setText(description);
