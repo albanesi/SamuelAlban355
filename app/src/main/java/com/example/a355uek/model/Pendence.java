@@ -3,6 +3,8 @@ package com.example.a355uek.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.text.DateFormat;
+
 @Entity
 public class Pendence {
 
@@ -15,9 +17,17 @@ public class Pendence {
 
     private String description;
 
-    private String date;
+    private  String date;
 
     private String importance;
+
+    public Pendence(int id, String title,String description/* DateFormat dateFormat*/, String importance) {
+        this.id=id;
+        this.title=title;
+        this.description=description;
+       // this.date=dateFormat.toString();
+        this.importance=importance;
+    }
 
     public int getId() {
         return id;

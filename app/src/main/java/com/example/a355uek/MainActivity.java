@@ -6,9 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.icu.text.DateFormat;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-import java.text.DateFormat;
+import com.example.a355uek.model.Pendence;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.text.FieldPosition;
 import java.text.ParsePosition;
 import java.util.ArrayList;
@@ -16,31 +22,48 @@ import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private FloatingActionButton button;
     RecyclerView recyclerView;
-    private List<Pendenz> dataModelList;
+    private List<Pendence> dataModelList;
     Adapter adapter;
-    ArrayList<Pendenz> items;
+    ArrayList<Pendence> items;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        button= findViewById(R.id.insertButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity2();
+            }
+        });
+        createExampleList();
+        buildRecyclerView();
 
-        items = new ArrayList<>();
 
-        items.add(new Pendenz(2,"Tisch putzen","hosi","medium"));
-        items.add(new Pendenz(3,"halloasds","haoi","medium"));
-        items.add(new Pendenz(4,"hallsaswao","hosai","medium"));
-        items.add(new Pendenz(5,"haafdsafdllo","moi","medium"));
+    }
+
+    private void openActivity2() {
+        Intent intent= new Intent(this, PendenceActivity.class);
+        startActivity(intent);
+    }
+
+    private void buildRecyclerView() {
         recyclerView=findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter= new Adapter(this, items);
         recyclerView.setAdapter(adapter);
-
     }
-    private void setData(){
 
-        dataModelList = new ArrayList<>();
-        dataModelList.add(new Pendenz(1, "Schuhe putzen", "ss", "normal"));
-        dataModelList.add(new Pendenz(2, "kako putzen", "ss", "normal"));
+    private void createExampleList() {
+        items = new ArrayList<>();
+
+        items.add(new Pendence(2,"Tisch putzen","hosi","medium"));
+        items.add(new Pendence(3,"halloasds","haoi","medium"));
+        items.add(new Pendence(4,"hallsaswao","hosai","medium"));
+        items.add(new Pendence(5,"haafdsafdllo","moi","medium"));
     }
+
+
 }

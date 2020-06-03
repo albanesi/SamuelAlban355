@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.a355uek.model.Pendence;
+
 import org.w3c.dom.Text;
 
 import java.util.List;
@@ -16,9 +18,9 @@ import java.util.List;
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     private LayoutInflater layoutInflater;
-    private List<Pendenz> data;
+    private List<Pendence> data;
 
-    Adapter(Context context, List<Pendenz> data){
+    Adapter(Context context, List<Pendence> data){
     this.layoutInflater = LayoutInflater.from(context);
     this.data=data;
     }
@@ -31,9 +33,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-    String title = data.get(position).getTitel();
-    String description = data.get(position).getBeschreibung();
-    String important = data.get(position).getDringlichkeit();
+    String title = data.get(position).getTitle();
+    String description = data.get(position).getDescription();
+    String important = data.get(position).getImportance();
+
     holder.textTitle.setText(title);
     holder.textdate.setText("1");
     holder.textDescription.setText(description);
