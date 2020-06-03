@@ -1,4 +1,4 @@
-package com.noseryoung.samuelalban335.model;
+package com.example.a355uek.model;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

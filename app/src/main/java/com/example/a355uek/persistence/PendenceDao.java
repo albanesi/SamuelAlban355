@@ -1,10 +1,10 @@
-package com.noseryoung.samuelalban335.persistence;
+package com.example.a355uek.persistence;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.noseryoung.samuelalban335.model.Pendence;
+import com.example.a355uek.model.Pendence;
 
 import java.util.List;
 

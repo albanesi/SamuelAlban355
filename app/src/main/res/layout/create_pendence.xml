@@ -14,7 +14,7 @@
         android:layout_marginTop="40dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:backgroundTint="@color/blue"
+        app:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.099"
@@ -45,7 +45,7 @@
         android:layout_marginBottom="92dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:backgroundTint="@color/blue"
+        app:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
@@ -74,7 +74,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="220dp"
         android:ems="10"
-        app:backgroundTint="@color/blue"
+        app:backgroundTint="@color/cardview_dark_background"
         android:hint="Enter Date" />
 
     <Spinner
