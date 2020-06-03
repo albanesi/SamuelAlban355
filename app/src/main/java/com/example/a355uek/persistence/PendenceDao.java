@@ -10,15 +10,17 @@ import java.util.List;
 
 @Dao
 public interface PendenceDao {
+
     @Query("SELECT * FROM Pendence")
     List<Pendence> getAll();
+
+    @Query("SELECT * FROM Pendence WHERE id = :pendenceId")
+    Pendence getPendenceById(long pendenceId);
 
     @Query("DELETE FROM Pendence")
     void deleteAll();
 
     @Insert
-    void insertAll(List<Pendence> pendences);
+    void insertAll(Pendence pendences);
 
-    @Query("Select count(*) from Pendence")
-    int countPendences();
 }

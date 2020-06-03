@@ -3,6 +3,8 @@ package com.example.a355uek.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 import java.text.DateFormat;
 
 @Entity
@@ -17,16 +19,20 @@ public class Pendence {
 
     private String description;
 
-    private  String date;
+    private String date;
 
     private String importance;
+    //  private DateFormat datum;
 
-    public Pendence(int id, String title,String description/* DateFormat dateFormat*/, String importance) {
-        this.id=id;
-        this.title=title;
-        this.description=description;
-       // this.date=dateFormat.toString();
-        this.importance=importance;
+    public Pendence(int id, String title, String description, String importance) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.importance = importance;
+    }
+
+    public Pendence(){
     }
 
     public int getId() {
@@ -49,8 +55,8 @@ public class Pendence {
         return description;
     }
 
-    public void setDescription(String descritpion) {
-        this.description = descritpion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getDate() {
@@ -68,4 +74,15 @@ public class Pendence {
     public void setImportance(String importance) {
         this.importance = importance;
     }
+
+    @Override
+    public String toString() {
+        return "Pendence{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", importance='" + importance + '\'' +
+                '}';
+    }
 }
+

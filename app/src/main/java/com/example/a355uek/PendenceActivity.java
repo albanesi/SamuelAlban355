@@ -7,20 +7,37 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class PendenceActivity extends AppCompatActivity {
     DatePickerDialog picker;
     EditText eText;
-    Button btnGet;
-    TextView tvw;
+    private TextView textView;
+
+    private View.OnClickListener mSaveOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View sendButton) {
+            //Aktion, welche beim Button-Klick ausgeführt werden soll.
+        }
+    };
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_pendence);
+
+        EditText editTitle = findViewById(R.id.createTitle);
+        EditText editDesc = findViewById(R.id.createDescription);
+        TextView date = findViewById(R.id.createDate);
+        Spinner spinner = findViewById(R.id.spinnerForImportance);
+        Button button = findViewById(R.id.saveButton);
+        button.setOnClickListener(mSaveOnClickListener);
+
         eText=(EditText) findViewById(R.id.createDate);
         eText.setInputType(InputType.TYPE_NULL);
         eText.setOnClickListener(new View.OnClickListener() {
