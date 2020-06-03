@@ -17,7 +17,7 @@ public class Pendence {
 
     private String description;
 
-    private Date date;
+    private String date;
 
     private String importance;
     //  private DateFormat datum;
@@ -57,11 +57,11 @@ public class Pendence {
         this.description = description;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
