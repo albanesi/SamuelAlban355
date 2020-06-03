@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         items = new ArrayList<>();
-        items.add(new Pendenz(1,"hallo","hoi","medium"));
-        items.add(new Pendenz(2,"hafafdas","hosi","medium"));
+
+        items.add(new Pendenz(2,"Tisch putzen","hosi","medium"));
         items.add(new Pendenz(3,"halloasds","haoi","medium"));
         items.add(new Pendenz(4,"hallsaswao","hosai","medium"));
         items.add(new Pendenz(5,"haafdsafdllo","moi","medium"));
