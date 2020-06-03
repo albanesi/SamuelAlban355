@@ -11,7 +11,7 @@ import com.example.a355uek.model.Pendence;
 @Database(entities = {Pendence.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static final String DB_NAME = "DemoDb";
+    private static final String DB_NAME = "pendence_db";
     private static AppDatabase appDb;
 
     public static AppDatabase getAppDb(Context context) {
