@@ -3,6 +3,11 @@ package com.example.a355uek.model;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
+
+
+import com.example.a355uek.DateConverter;
 
 import java.util.Date;
 
@@ -17,20 +22,21 @@ public class Pendence {
 
     //Spalte heisst in der DB title
     @ColumnInfo
-    public String title;
+    private String title;
     @ColumnInfo
-    public String description;
+    private String description;
+   /* @ColumnInfo
+    private String date;*/
     @ColumnInfo
-    public String date;
+    private String importance;
     @ColumnInfo
-    public String importance;
-    //  private DateFormat datum;
+    @TypeConverters({DateConverter.class})
+    private Date dateToFinish;
 
-    public Pendence(int id, String title, String description, String importance) {
-        this.id = id;
+    public Pendence(String title, String description, Date date, String importance) {
         this.title = title;
         this.description = description;
-        this.date = date;
+        this.dateToFinish = date;
         this.importance = importance;
     }
 
@@ -61,13 +67,13 @@ public class Pendence {
         this.description = description;
     }
 
-    public String getDate() {
+   /* public String getDate() {
         return date;
     }
 
     public void setDate(String date) {
         this.date = date;
-    }
+    }*/
 
     public String getImportance() {
         return importance;
@@ -76,15 +82,13 @@ public class Pendence {
     public void setImportance(String importance) {
         this.importance = importance;
     }
-
-    @Override
-    public String toString() {
-        return "Pendence{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", importance='" + importance + '\'' +
-                '}';
+    public void setDateToFinish(Date dateToFinish){
+        this.dateToFinish=dateToFinish;
     }
+    public Date getDateToFinish(){
+        return dateToFinish;
+    }
+
+
 }
 

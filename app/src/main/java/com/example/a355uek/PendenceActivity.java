@@ -13,21 +13,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.example.a355uek.model.Pendence;
 import com.example.a355uek.persistence.AppDatabase;
 import com.example.a355uek.persistence.PendenceDao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class PendenceActivity extends AppCompatActivity {
+
     DatePickerDialog picker;
     EditText eText, eText1, eText2;
     TextView textView;
     Spinner spinner;
     Button button;
-    //PendenceDao pendenceDao = AppDatabase.getAppDb(getApplicationContext()).getPendenceDao();
+    Date date;
+    //public static AppDatabase appDatabase;
+    // endenceDao pendenceDao = AppDatabase.getAppDb(getApplicationContext()).getPendenceDao();
     Pendence pendence;
 
     private View.OnClickListener mSaveOnClickListener = new View.OnClickListener() {
@@ -37,8 +44,18 @@ public class PendenceActivity extends AppCompatActivity {
             // wird, ausgeben
             String title = eText1.getText().toString();
             String description = eText2.getText().toString();
-            //pendence.setTitle(title);
-            //pendence.setDescription(description);
+            String dateInString = eText.getText().toString();
+            String importance = spinner.getSelectedItem().toString();
+
+            try {
+                date=new SimpleDateFormat("dd/MM/yyyy").parse(dateInString);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+           // appDatabase = Room.databaseBuilder(getApplicationContext(),AppDatabase.class,"pendence_db").allowMainThreadQueries().build();
+            Pendence pendence = new Pendence(title,description,date,importance);
+            //appDatabase.getPendenceDao().insertAll(pendence);
+            savePendece(pendence);
 
             /*Intent showNameActivityIntent = new Intent(getActivity(), Pendence.class);
             showNameActivityIntent.putExtra(„key_person_name“, name);
@@ -63,6 +80,7 @@ public class PendenceActivity extends AppCompatActivity {
         button = findViewById(R.id.saveButton);
         button.setOnClickListener(mSaveOnClickListener);
 
+
         eText = (EditText) findViewById(R.id.createDate);
         eText.setInputType(InputType.TYPE_NULL);
         eText.setOnClickListener(new View.OnClickListener() {
@@ -83,5 +101,9 @@ public class PendenceActivity extends AppCompatActivity {
                 picker.show();
             }
         });
+    }
+    private void savePendece(Pendence pendence){
+    PendenceDao pendenceDao = AppDatabase.getAppDb(this).getPendenceDao();
+    pendenceDao.insertAll(pendence);
     }
 }

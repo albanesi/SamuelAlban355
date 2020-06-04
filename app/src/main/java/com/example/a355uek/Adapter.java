@@ -15,6 +15,8 @@ import com.example.a355uek.model.Pendence;
 
 import org.w3c.dom.Text;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
@@ -40,9 +42,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     String title = data.get(position).getTitle();
     String description = data.get(position).getDescription();
     String important = data.get(position).getImportance();
+    String rawdate = data.get(position).getDateToFinish().toString();
+    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+    formatter = new SimpleDateFormat("dd MMMM yyyy");
+    final String strDate = formatter.format(rawdate);
+
+
+
 
     holder.textTitle.setText(title);
-    holder.textdate.setText("1");
+    holder.textdate.setText(strDate);
     holder.textDescription.setText(description);
     holder.textImportance.setText(important);
 
@@ -52,6 +61,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             Intent intent = new Intent(context,SecondActivity.class);
             intent.putExtra("title",data.get(position).getTitle());
             intent.putExtra("description",data.get(position).getDescription());
+            intent.putExtra("date",strDate);
             intent.putExtra("importance",data.get(position).getImportance());
             context.startActivity(intent);
         }

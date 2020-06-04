@@ -5,10 +5,13 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
+import com.example.a355uek.DateConverter;
 import com.example.a355uek.model.Pendence;
 
 @Database(entities = {Pendence.class}, version = 3)
+@TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DB_NAME = "pendence_db";
