@@ -1,8 +1,10 @@
 package com.example.a355uek.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 @Entity
@@ -13,14 +15,16 @@ public class Pendence {
     private int id;
 
     //Spalte heisst in der DB title
+    @ColumnInfo
     private String title;
-
+    @ColumnInfo
     private String description;
-
+    @ColumnInfo
     private String date;
-
+    @ColumnInfo
     private String importance;
-    //  private DateFormat datum;
+    @ColumnInfo
+    private DateFormat datum;
 
     public Pendence(int id, String title, String description, String importance) {
         this.id = id;
@@ -73,14 +77,6 @@ public class Pendence {
         this.importance = importance;
     }
 
-    @Override
-    public String toString() {
-        return "Pendence{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", importance='" + importance + '\'' +
-                '}';
-    }
+
 }
 

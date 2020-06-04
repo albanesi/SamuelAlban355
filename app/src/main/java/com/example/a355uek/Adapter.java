@@ -1,12 +1,14 @@
 package com.example.a355uek;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.a355uek.model.Pendence;
@@ -19,10 +21,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     private LayoutInflater layoutInflater;
     private List<Pendence> data;
+    private Context context;
 
     Adapter(Context context, List<Pendence> data){
     this.layoutInflater = LayoutInflater.from(context);
     this.data=data;
+    this.context=context;
     }
     @NonNull
     @Override
@@ -32,7 +36,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
     String title = data.get(position).getTitle();
     String description = data.get(position).getDescription();
     String important = data.get(position).getImportance();
@@ -40,6 +44,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     holder.textdate.setText("1");
     holder.textDescription.setText(description);
     holder.textImportance.setText(important);
+
+    holder.itemLayout.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(context,SecondActivity.class);
+            intent.putExtra("title",data.get(position).getTitle());
+            intent.putExtra("description",data.get(position).getDescription());
+            intent.putExtra("importance",data.get(position).getImportance());
+            context.startActivity(intent);
+        }
+    });
 
     }
 
@@ -51,12 +66,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView textTitle, textDescription, textImportance, textdate;
+        ConstraintLayout itemLayout;
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             textTitle=itemView.findViewById(R.id.titeltext);
             textDescription=itemView.findViewById(R.id.beschreibungstext);
             textImportance=itemView.findViewById(R.id.dringlichkeitstext);
             textdate=itemView.findViewById(R.id.zuerledigenbisText);
+            itemLayout=itemView.findViewById(R.id.itemView);
         }
     }
 }
