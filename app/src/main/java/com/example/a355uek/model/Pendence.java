@@ -4,27 +4,27 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.text.DateFormat;
 import java.util.Date;
+
+import java.text.DateFormat;
 
 @Entity
 public class Pendence {
 
     //Autoincrement
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    public int id;
 
     //Spalte heisst in der DB title
     @ColumnInfo
-    private String title;
+    public String title;
     @ColumnInfo
-    private String description;
+    public String description;
     @ColumnInfo
-    private String date;
+    public String date;
     @ColumnInfo
-    private String importance;
-    @ColumnInfo
-    private DateFormat datum;
+    public String importance;
+    //  private DateFormat datum;
 
     public Pendence(int id, String title, String description, String importance) {
         this.id = id;
@@ -77,6 +77,14 @@ public class Pendence {
         this.importance = importance;
     }
 
-
+    @Override
+    public String toString() {
+        return "Pendence{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", importance='" + importance + '\'' +
+                '}';
+    }
 }
 

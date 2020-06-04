@@ -1,6 +1,7 @@
 package com.example.a355uek;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -9,20 +10,44 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.a355uek.model.Pendence;
+import com.example.a355uek.persistence.AppDatabase;
+import com.example.a355uek.persistence.PendenceDao;
 
 import java.util.Calendar;
 import java.util.Date;
 
 public class PendenceActivity extends AppCompatActivity {
     DatePickerDialog picker;
-    EditText eText;
-    private TextView textView;
+    EditText eText, eText1, eText2;
+    TextView textView;
+    Spinner spinner;
+    Button button;
+    //PendenceDao pendenceDao = AppDatabase.getAppDb(getApplicationContext()).getPendenceDao();
+    Pendence pendence;
 
     private View.OnClickListener mSaveOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View sendButton) {
-            //Aktion, welche beim Button-Klick ausgeführt werden soll.
+            //Eingegebener Text in einem Toast, welches 3.5 Sekunden (Toast.LENGTH_LONG) angezeigt
+            // wird, ausgeben
+            String title = eText1.getText().toString();
+            String description = eText2.getText().toString();
+            //pendence.setTitle(title);
+            //pendence.setDescription(description);
+
+            /*Intent showNameActivityIntent = new Intent(getActivity(), Pendence.class);
+            showNameActivityIntent.putExtra(„key_person_name“, name);
+            startActivity(showNameActivityIntent);*/
+            
+            Toast toast = Toast.makeText(getApplicationContext(), title, Toast.LENGTH_LONG);
+            toast.show();
+            //User in DB speichern
+            //pendenceDao.insertAll(pendence);
         }
     };
 
@@ -31,14 +56,14 @@ public class PendenceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_pendence);
 
-        EditText editTitle = findViewById(R.id.createTitle);
-        EditText editDesc = findViewById(R.id.createDescription);
-        TextView date = findViewById(R.id.createDate);
-        Spinner spinner = findViewById(R.id.spinnerForImportance);
-        Button button = findViewById(R.id.saveButton);
+        eText1 = findViewById(R.id.createTitle);
+        eText2 = findViewById(R.id.createDescription);
+        textView = findViewById(R.id.createDate);
+        spinner = findViewById(R.id.spinnerForImportance);
+        button = findViewById(R.id.saveButton);
         button.setOnClickListener(mSaveOnClickListener);
 
-        eText=(EditText) findViewById(R.id.createDate);
+        eText = (EditText) findViewById(R.id.createDate);
         eText.setInputType(InputType.TYPE_NULL);
         eText.setOnClickListener(new View.OnClickListener() {
             @Override
