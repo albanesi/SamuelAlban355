@@ -1,5 +1,6 @@
 package com.example.a355uek.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -10,16 +11,17 @@ public class Pendence {
 
     //Autoincrement
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    public int id;
 
     //Spalte heisst in der DB title
-    private String title;
-
-    private String description;
-
-    private String date;
-
-    private String importance;
+    @ColumnInfo
+    public String title;
+    @ColumnInfo
+    public String description;
+    @ColumnInfo
+    public String date;
+    @ColumnInfo
+    public String importance;
     //  private DateFormat datum;
 
     public Pendence(int id, String title, String description, String importance) {
