@@ -1,17 +1,12 @@
 package com.example.a355uek.model;
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
-
-
 import com.example.a355uek.DateConverter;
-
 import java.util.Date;
-
-import java.text.DateFormat;
 
 @Entity
 public class Pendence {
@@ -25,12 +20,11 @@ public class Pendence {
     private String title;
     @ColumnInfo
     private String description;
-   /* @ColumnInfo
-    private String date;*/
     @ColumnInfo
     private String importance;
     @ColumnInfo
     @TypeConverters({DateConverter.class})
+    @Nullable
     private Date dateToFinish;
 
     public Pendence(String title, String description, Date date, String importance) {
@@ -67,14 +61,6 @@ public class Pendence {
         this.description = description;
     }
 
-   /* public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }*/
-
     public String getImportance() {
         return importance;
     }
@@ -82,13 +68,14 @@ public class Pendence {
     public void setImportance(String importance) {
         this.importance = importance;
     }
+
     public void setDateToFinish(Date dateToFinish){
         this.dateToFinish=dateToFinish;
     }
+
     public Date getDateToFinish(){
         return dateToFinish;
     }
-
 
 }
 
