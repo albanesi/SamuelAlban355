@@ -63,7 +63,7 @@ public class PendenceAdapter extends RecyclerView.Adapter<PendenceAdapter.ViewHo
     holder.itemLayout.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(context, DetailledActivity.class);
+            Intent intent = new Intent(context, DetailedActivity.class);
             intent.putExtra("title",data.get(position).getTitle());
             intent.putExtra("date",formatTime(data.get(position).getDateToFinish()));
             intent.putExtra("description",data.get(position).getDescription());
@@ -91,9 +91,9 @@ public class PendenceAdapter extends RecyclerView.Adapter<PendenceAdapter.ViewHo
         //takes the custom_view as parameter
         public ViewHolder(@NonNull View itemView){
             super(itemView);
-            textTitle=itemView.findViewById(R.id.titeltext);
-            textImportance=itemView.findViewById(R.id.dringlichkeitstext);
-            textdate=itemView.findViewById(R.id.zuerledigenbisText);
+            textTitle=itemView.findViewById(R.id.title_custom_view);
+            textImportance=itemView.findViewById(R.id.importance_custom_view);
+            textdate=itemView.findViewById(R.id.date_custom_view);
             itemLayout=itemView.findViewById(R.id.itemView);
 
         }

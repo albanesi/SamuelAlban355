@@ -13,7 +13,7 @@ public class Pendence {
 
     //Autoincrement
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    private int id;
 
     //Spalte heisst in der DB title
     @ColumnInfo
@@ -27,7 +27,7 @@ public class Pendence {
     @Nullable
     private Date dateToFinish;
 
-    //is the constructor of the class. Takes an id, a title, a description, a importance value and a date as parameters
+    //is the constructor of the class. Takes a title, a description, a importance value and a date as parameters
     public Pendence(String title, String description, Date date, String importance) {
         this.title = title;
         this.description = description;

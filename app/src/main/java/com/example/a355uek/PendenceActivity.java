@@ -36,99 +36,6 @@ public class PendenceActivity extends AppCompatActivity {
     Toast dateToast;
     boolean areStringsRight;
     boolean isDateRight;
-    // each time the SaveButton is clicked this Method gets activated
-    private View.OnClickListener mSaveOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View sendButton) {
-
-            //first it gets the data from the XML View (activity_pendence)
-            //and saves them on Strings
-            String title = titleField.getText().toString();
-            String description = eText2.getText().toString();
-            String dateInString = eText.getText().toString();
-            String importance = spinner.getSelectedItem().toString();
-
-
-
-            //checks if the title and description fit the validation
-            areStringsRight = isTheStringValidationRight(title,description);
-
-
-
-            //parses the dateInString in a dd.MM.yyyy Format
-            date = parseTheDate(dateInString);
-            //checks if the date fits the format
-            isDateRight=isTheDateRight(date);
-
-
-            if(areStringsRight==true&&isDateRight==true){
-                //here it creates a new pendence from the data that we get from the XML View
-                Pendence pendence = new Pendence(title,description,date,importance);
-                //here it saves the pendence
-                savePendece(pendence);
-                //it shows a toast that the entry was right
-                Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.saveForm), Toast.LENGTH_LONG);
-                toast.show();
-                //then he goes back to the MainActivity
-                openTheMainActivity();
-            }else{
-                try {
-                    showTheToasts();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    };
-
-    private void showTheToasts() throws InterruptedException {
-        if(areStringsRight==false){
-            stringToast = Toast.makeText(getApplicationContext(), getString(R.string.textfieldsMistake), Toast.LENGTH_SHORT);
-            stringToast.show();
-
-        }
-        if(isDateRight==false){
-            dateToast=Toast.makeText(getApplicationContext(), getString(R.string.dateMistake), Toast.LENGTH_SHORT);
-            dateToast.show();
-        }
-
-
-
-    }
-
-    //parses the dateInString in a dd.MM.yyyy Format
-    private Date parseTheDate(String dateInString) {
-        try {
-            date=new SimpleDateFormat("dd.MM.yyyy").parse(dateInString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return date;
-    }
-
-    //this method checks if the length of the title is over 50 and checks if
-    //the length of the description is over 500
-    //if they arent it returns true else false
-    private boolean isTheStringValidationRight(String title, String description){
-        if(title==null ||title.length()>50||description.length()>500||description==null){
-
-            return false;
-        }else{
-            return true;
-        }
-    }
-    //this method watches if the date is not null and it checks if
-    //if the date is written in dd.mm.yyyy format
-    private boolean isTheDateRight(Date date){
-        if(date != null){
-            if (date instanceof Date){
-                return true;
-            }
-            return false;
-        }else{
-            return false;
-        }
-    }
 
     // it gets called each time we create this activity
     @Override
@@ -167,6 +74,92 @@ public class PendenceActivity extends AppCompatActivity {
                 picker.show();
             }
         });
+    }
+
+    // each time the SaveButton is clicked this Method gets activated
+    private View.OnClickListener mSaveOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View sendButton) {
+
+            //first it gets the data from the XML View (activity_pendence)
+            //and saves them on Strings
+            String title = titleField.getText().toString();
+            String description = eText2.getText().toString();
+            String dateInString = eText.getText().toString();
+            String importance = spinner.getSelectedItem().toString();
+
+            //checks if the title and description fit the validation
+            areStringsRight = isTheStringValidationRight(title,description);
+
+            //parses the dateInString in a dd.MM.yyyy Format
+            date = parseTheDate(dateInString);
+            //checks if the date fits the format
+            isDateRight=isTheDateRight(date);
+
+            if(areStringsRight==true&&isDateRight==true){
+                //here it creates a new pendence from the data that we get from the XML View
+                Pendence pendence = new Pendence(title,description,date,importance);
+                //here it saves the pendence
+                savePendece(pendence);
+                //it shows a toast that the entry was right
+                Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.saveForm), Toast.LENGTH_LONG);
+                toast.show();
+                //then he goes back to the MainActivity
+                openTheMainActivity();
+            }else{
+                try {
+                    showTheToasts();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
+
+    private void showTheToasts() throws InterruptedException {
+        if(areStringsRight==false){
+            stringToast = Toast.makeText(getApplicationContext(), getString(R.string.textfieldsMistake), Toast.LENGTH_SHORT);
+            stringToast.show();
+        }
+        if(isDateRight==false){
+            Thread.sleep(1000);
+            dateToast=Toast.makeText(getApplicationContext(), getString(R.string.dateMistake), Toast.LENGTH_SHORT);
+            dateToast.show();
+        }
+    }
+
+    //parses the dateInString in a dd.MM.yyyy Format
+    private Date parseTheDate(String dateInString) {
+        try {
+            date=new SimpleDateFormat("dd.MM.yyyy").parse(dateInString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    //this method checks if the length of the title is over 50 and checks if
+    //the length of the description is over 500
+    //if they arent it returns true else false
+    private boolean isTheStringValidationRight(String title, String description){
+        if(title==null ||title.length()>50||description.length()>500){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    //this method watches if the date is not null and it checks if
+    //if the date is written in dd.mm.yyyy format
+    private boolean isTheDateRight(Date date){
+        if(date != null){
+            if (date instanceof Date){
+                return true;
+            }
+            return false;
+        }else{
+            return false;
+        }
     }
 
     //connects and initalises the UI Components from the Activity

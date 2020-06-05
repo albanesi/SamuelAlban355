@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
- public class DetailledActivity extends AppCompatActivity {
+ public class DetailedActivity extends AppCompatActivity {
 
     //UI Components
     TextView title,description,importance, date;
@@ -19,7 +19,7 @@ import android.widget.TextView;
         //activity_detailled is our view
         setContentView(R.layout.activity_detailled);
 
-        //we connect and initalise the UI Components from the Activity
+        //we connect and initialise the UI Components from the Activity
         //with them from the XML View
         title=findViewById(R.id.titleofsecond);
         description=findViewById(R.id.descriptionofsecond);
