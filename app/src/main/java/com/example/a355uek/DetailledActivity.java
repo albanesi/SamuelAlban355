@@ -16,8 +16,8 @@ import android.widget.TextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //activity_second is our view
-        setContentView(R.layout.activity_second);
+        //activity_detailled is our view
+        setContentView(R.layout.activity_detailled);
 
         //we connect and initalise the UI Components from the Activity
         //with them from the XML View

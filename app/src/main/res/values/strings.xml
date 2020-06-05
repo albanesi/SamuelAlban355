@@ -2,7 +2,7 @@
     <string name="app_name">Pendenz Apps</string>
     <string name="title">Titel</string>
     <string name="description">Beschreibung</string>
-    <string name="dateHint">D(D)/M(M)/YYYY</string>
+    <string name="dateHint">D(D).M(M).YYYY</string>
     <string name="date">Datum eingeben</string>
     <string name="importance">Wichtigkeit</string>
     <string name="savebutton">Pendenz speichern</string>
