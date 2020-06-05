@@ -27,24 +27,25 @@ public class Pendence {
     @Nullable
     private Date dateToFinish;
 
+    //is the constructor of the class. Takes an id, a title, a description, a importance value and a date as parameters
     public Pendence(String title, String description, Date date, String importance) {
         this.title = title;
         this.description = description;
         this.dateToFinish = date;
         this.importance = importance;
     }
-
+    //the default constructor
     public Pendence(){
     }
-
+    //returns the id
     public int getId() {
         return id;
     }
-
+    //takes an id as a parameter and sets it
     public void setId(int id) {
         this.id = id;
     }
-
+    //returns the title of the Pendenz
     public String getTitle() {
         return title;
     }

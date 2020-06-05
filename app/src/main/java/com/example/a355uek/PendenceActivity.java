@@ -37,8 +37,6 @@ public class PendenceActivity extends AppCompatActivity {
     private View.OnClickListener mSaveOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View sendButton) {
-            //Eingegebener Text in einem Toast, welches 3.5 Sekunden (Toast.LENGTH_LONG) angezeigt
-            // wird, ausgeben
 
             //first it gets the data from the XML View (activity_pendence)
             //and saves them on Strings
@@ -53,12 +51,7 @@ public class PendenceActivity extends AppCompatActivity {
             //checks if the date fits the format
             boolean isDateRight=isTheDateRight(dateInString);
             //parses the dateInString in a dd.MM.yyyy Format
-            try {
-                date=new SimpleDateFormat("dd.MM.yyyy").parse(dateInString);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
+            date = parseTheDate(dateInString);
 
 
             if(areStringsRight==true&&isDateRight==true){
@@ -76,11 +69,18 @@ public class PendenceActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), "Datum im dd.mm.yyyy format eingeben, Titel sollte weniger als 50 Zeichen haben und Beschreibung sollte weniger als 500 Zeichen sein", Toast.LENGTH_LONG);
                 toast.show();
             }
-
-
-
         }
     };
+
+    private Date parseTheDate(String dateInString) {
+        try {
+            date=new SimpleDateFormat("dd.MM.yyyy").parse(dateInString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
     //this method checks if the length of the title is over 50 and checks if
     //the length of the description is over 500
     //if they arent it returns true else false
@@ -111,21 +111,15 @@ public class PendenceActivity extends AppCompatActivity {
 
         //connects and initalises the UI Components from the Activity
         //with them from the view
-
-        titleField = (EditText) findViewById(R.id.createTitle);
-        if( titleField.getText().toString().length() == 0 ) {
-            titleField.setError( "Dieses ist ein Pflichtfeld" );
-        }
-        eText2 = findViewById(R.id.createDescription);
-        textView = findViewById(R.id.createDate);
-        spinner = findViewById(R.id.spinnerForImportance);
-        button = findViewById(R.id.saveButton);
+        initialiseTheViews();
 
         //here he defines what method should be called, when the button gets clicekd
         button.setOnClickListener(mSaveOnClickListener);
 
-        //das hani leider nöd so guet verstande samuel, muesch mir helfe
-        eText = (EditText) findViewById(R.id.createDate);
+        //takes the value of the UI Component from the UI
+        //creates a new DatePicker Dialog
+        //and then it shows it in dd.MM.yyyy format
+        eText = findViewById(R.id.createDate);
         eText.setInputType(InputType.TYPE_NULL);
         eText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +140,20 @@ public class PendenceActivity extends AppCompatActivity {
             }
         });
     }
+
+    //connects and initalises the UI Components from the Activity
+    //with them from the view
+    private void initialiseTheViews() {
+        titleField = findViewById(R.id.createTitle);
+        if( titleField.getText().toString().length() == 0 ) {
+            titleField.setError( "Dieses ist ein Pflichtfeld" );
+        }
+        eText2 = findViewById(R.id.createDescription);
+        textView = findViewById(R.id.createDate);
+        spinner = findViewById(R.id.spinnerForImportance);
+        button = findViewById(R.id.saveButton);
+    }
+
     //First it creates a new PendeceDao
     //then it inserts the pendence that is given as a parameter
     private void savePendece(Pendence pendence){

@@ -23,11 +23,11 @@ public class PendenceAdapter extends RecyclerView.Adapter<PendenceAdapter.ViewHo
     //fields from class adapter
     private LayoutInflater layoutInflater;
 
-    //is a field, will be initalised in the constructor when Main Activity passes the list
-    //of pendeces from the db
+    //is a field, will be initialised in the constructor when Main Activity passes the list
+    //of pendences from the db
     private List<Pendence> data;
 
-    //needed for switching the Activits
+    //needed for switching the Activities
     private Context context;
 
     //the adapter constructor, takes an context and a list of pendences as parameter
@@ -84,8 +84,8 @@ public class PendenceAdapter extends RecyclerView.Adapter<PendenceAdapter.ViewHo
         TextView textTitle, textImportance, textdate;
         ConstraintLayout itemLayout;
 
-        //ViewHodler Constructor
-        //connets and initalizes all the upper UI-components with the
+        //ViewHolder Constructor
+        //connects and initalizes all the upper UI-components with the
         //UI-Components from the fragment
         //takes the custom_view as parameter
         public ViewHolder(@NonNull View itemView){
@@ -107,7 +107,6 @@ public class PendenceAdapter extends RecyclerView.Adapter<PendenceAdapter.ViewHo
         }
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
         String strDate= formatter.format(date);
-        System.out.println(strDate);
         return strDate;
     }
 }

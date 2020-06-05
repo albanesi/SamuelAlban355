@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.widget.TextView;
 
  public class SecondActivity extends AppCompatActivity {
+
     //UI Components
     TextView title,description,importance, date;
+
     //Strings that are used to fill the UI Components with Data
     String titleString,descriptionString,importanceString, dateString;
 
     //this method gets called, each time we create a new state of this activity
-     //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
