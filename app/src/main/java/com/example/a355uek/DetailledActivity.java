@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
- public class SecondActivity extends AppCompatActivity {
+ public class DetailledActivity extends AppCompatActivity {
 
     //UI Components
     TextView title,description,importance, date;

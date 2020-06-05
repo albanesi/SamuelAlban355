@@ -63,9 +63,10 @@ public class PendenceAdapter extends RecyclerView.Adapter<PendenceAdapter.ViewHo
     holder.itemLayout.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(context,SecondActivity.class);
+            Intent intent = new Intent(context, DetailledActivity.class);
             intent.putExtra("title",data.get(position).getTitle());
             intent.putExtra("date",formatTime(data.get(position).getDateToFinish()));
+            intent.putExtra("description",data.get(position).getDescription());
             intent.putExtra("importance",data.get(position).getImportance());
             context.startActivity(intent);
         }
@@ -81,7 +82,7 @@ public class PendenceAdapter extends RecyclerView.Adapter<PendenceAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         //UI Components of the Fragment
-        TextView textTitle, textImportance, textdate;
+        TextView textTitle, textImportance, textdate, textDescription;
         ConstraintLayout itemLayout;
 
         //ViewHolder Constructor
@@ -94,6 +95,7 @@ public class PendenceAdapter extends RecyclerView.Adapter<PendenceAdapter.ViewHo
             textImportance=itemView.findViewById(R.id.dringlichkeitstext);
             textdate=itemView.findViewById(R.id.zuerledigenbisText);
             itemLayout=itemView.findViewById(R.id.itemView);
+
         }
 
     }

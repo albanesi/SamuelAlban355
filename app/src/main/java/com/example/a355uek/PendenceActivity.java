@@ -32,7 +32,10 @@ public class PendenceActivity extends AppCompatActivity {
     Spinner spinner;
     Button button;
     Date date;
-
+    Toast stringToast;
+    Toast dateToast;
+    boolean areStringsRight;
+    boolean isDateRight;
     // each time the SaveButton is clicked this Method gets activated
     private View.OnClickListener mSaveOnClickListener = new View.OnClickListener() {
         @Override
@@ -44,14 +47,18 @@ public class PendenceActivity extends AppCompatActivity {
             String description = eText2.getText().toString();
             String dateInString = eText.getText().toString();
             String importance = spinner.getSelectedItem().toString();
-            String saved = "erfolgreich gespeichert";
+
+
 
             //checks if the title and description fit the validation
-            boolean areStringsRight=isTheStringValidationRight(title,description);
-            //checks if the date fits the format
-            boolean isDateRight=isTheDateRight(dateInString);
+            areStringsRight = isTheStringValidationRight(title,description);
+
+
+
             //parses the dateInString in a dd.MM.yyyy Format
             date = parseTheDate(dateInString);
+            //checks if the date fits the format
+            isDateRight=isTheDateRight(date);
 
 
             if(areStringsRight==true&&isDateRight==true){
@@ -60,18 +67,36 @@ public class PendenceActivity extends AppCompatActivity {
                 //here it saves the pendence
                 savePendece(pendence);
                 //it shows a toast that the entry was right
-                Toast toast = Toast.makeText(getApplicationContext(), saved, Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.saveForm), Toast.LENGTH_LONG);
                 toast.show();
                 //then he goes back to the MainActivity
                 openTheMainActivity();
             }else{
-                //it shows a toast that you should correct yourself
-                Toast toast = Toast.makeText(getApplicationContext(), "Datum im dd.mm.yyyy format eingeben, Titel sollte weniger als 50 Zeichen haben und Beschreibung sollte weniger als 500 Zeichen sein", Toast.LENGTH_LONG);
-                toast.show();
+                try {
+                    showTheToasts();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     };
 
+    private void showTheToasts() throws InterruptedException {
+        if(areStringsRight==false){
+            stringToast = Toast.makeText(getApplicationContext(), getString(R.string.textfieldsMistake), Toast.LENGTH_SHORT);
+            stringToast.show();
+
+        }
+        if(isDateRight==false){
+            dateToast=Toast.makeText(getApplicationContext(), getString(R.string.dateMistake), Toast.LENGTH_SHORT);
+            dateToast.show();
+        }
+
+
+
+    }
+
+    //parses the dateInString in a dd.MM.yyyy Format
     private Date parseTheDate(String dateInString) {
         try {
             date=new SimpleDateFormat("dd.MM.yyyy").parse(dateInString);
@@ -85,7 +110,8 @@ public class PendenceActivity extends AppCompatActivity {
     //the length of the description is over 500
     //if they arent it returns true else false
     private boolean isTheStringValidationRight(String title, String description){
-        if(title==null ||title.length()>50||description.length()>500){
+        if(title==null ||title.length()>50||description.length()>500||description==null){
+
             return false;
         }else{
             return true;
@@ -93,13 +119,15 @@ public class PendenceActivity extends AppCompatActivity {
     }
     //this method watches if the date is not null and it checks if
     //if the date is written in dd.mm.yyyy format
-    private boolean isTheDateRight(String dateInString){
-        String regex = "([0-9]{2}).([0-9]{2}).([0-9]{4})";
-        if(dateInString!=null){
-           boolean isRight =Pattern.matches(regex, dateInString);
-           return isRight;
-        }else{return false;}
-
+    private boolean isTheDateRight(Date date){
+        if(date != null){
+            if (date instanceof Date){
+                return true;
+            }
+            return false;
+        }else{
+            return false;
+        }
     }
 
     // it gets called each time we create this activity
@@ -133,7 +161,7 @@ public class PendenceActivity extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                eText.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                eText.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);
                             }
                         }, year, month, day);
                 picker.show();
@@ -144,9 +172,10 @@ public class PendenceActivity extends AppCompatActivity {
     //connects and initalises the UI Components from the Activity
     //with them from the view
     private void initialiseTheViews() {
+
         titleField = findViewById(R.id.createTitle);
         if( titleField.getText().toString().length() == 0 ) {
-            titleField.setError( "Dieses ist ein Pflichtfeld" );
+            titleField.setError(getString(R.string.required));
         }
         eText2 = findViewById(R.id.createDescription);
         textView = findViewById(R.id.createDate);
