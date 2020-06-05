@@ -22,6 +22,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 public class PendenceActivity extends AppCompatActivity {
     //The UI Components of the Activity
@@ -47,25 +48,59 @@ public class PendenceActivity extends AppCompatActivity {
             String importance = spinner.getSelectedItem().toString();
             String saved = "erfolgreich gespeichert";
 
+            //checks if the title and description fit the validation
+            boolean areStringsRight=isTheStringValidationRight(title,description);
+            //checks if the date fits the format
+            boolean isDateRight=isTheDateRight(dateInString);
             //parses the dateInString in a dd.MM.yyyy Format
             try {
                 date=new SimpleDateFormat("dd.MM.yyyy").parse(dateInString);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-           //here it creates a new pendence from the data that we get from the XML View
-            Pendence pendence = new Pendence(title,description,date,importance);
-           //here it saves the pendence
-            savePendece(pendence);
 
-            //it shows a toast that the entry was right
-            Toast toast = Toast.makeText(getApplicationContext(), saved, Toast.LENGTH_LONG);
-            toast.show();
 
-            //then he goes back to the MainActivity
-            openTheMainActivity();
+
+            if(areStringsRight==true&&isDateRight==true){
+                //here it creates a new pendence from the data that we get from the XML View
+                Pendence pendence = new Pendence(title,description,date,importance);
+                //here it saves the pendence
+                savePendece(pendence);
+                //it shows a toast that the entry was right
+                Toast toast = Toast.makeText(getApplicationContext(), saved, Toast.LENGTH_LONG);
+                toast.show();
+                //then he goes back to the MainActivity
+                openTheMainActivity();
+            }else{
+                //it shows a toast that you should correct yourself
+                Toast toast = Toast.makeText(getApplicationContext(), "Datum im dd.mm.yyyy format eingeben, Titel sollte weniger als 50 Zeichen haben und Beschreibung sollte weniger als 500 Zeichen sein", Toast.LENGTH_LONG);
+                toast.show();
+            }
+
+
+
         }
     };
+    //this method checks if the length of the title is over 50 and checks if
+    //the length of the description is over 500
+    //if they arent it returns true else false
+    private boolean isTheStringValidationRight(String title, String description){
+        if(title==null ||title.length()>50||description.length()>500){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    //this method watches if the date is not null and it checks if
+    //if the date is written in dd.mm.yyyy format
+    private boolean isTheDateRight(String dateInString){
+        String regex = "([0-9]{2}).([0-9]{2}).([0-9]{4})";
+        if(dateInString!=null){
+           boolean isRight =Pattern.matches(regex, dateInString);
+           return isRight;
+        }else{return false;}
+
+    }
 
     // it gets called each time we create this activity
     @Override
