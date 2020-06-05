@@ -14,10 +14,10 @@
         android:layout_marginTop="40dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:backgroundTint="@color/blue"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.175" />
@@ -45,7 +45,7 @@
         android:layout_marginBottom="92dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:backgroundTint="@color/blue"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="27dp"
         android:layout_marginBottom="92dp"
         android:text="@string/title"
         app:layout_constraintBottom_toTopOf="@+id/descriptionView"
@@ -72,10 +72,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="210dp"
         android:ems="10"
-        app:backgroundTint="@color/blue"
-        android:hint="Enter Date" />
+        android:hint="@string/dateHint"
+        app:backgroundTint="@color/colorPrimary" />
 
     <Spinner
         android:id="@+id/spinnerForImportance"
@@ -90,7 +90,23 @@
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="250dp"
+        android:layout_marginLeft="220dp"
         android:layout_marginTop="400dp"
         android:text="@string/savebutton" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="270dp"
+        android:text="@string/importance" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="200dp"
+        android:text="@string/date" />
 </RelativeLayout>
