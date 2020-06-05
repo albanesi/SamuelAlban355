@@ -23,7 +23,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/titeltext"
+                android:id="@+id/title_custom_view"
                 android:layout_width="0dp"
                 android:textSize="25dp"
                 android:layout_height="30dp"
@@ -34,24 +34,24 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/dringlichkeitstext"
+                android:id="@+id/importance_custom_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/zuerledigenbisText"
-                app:layout_constraintTop_toBottomOf="@+id/zuerledigenbisText" />
+                app:layout_constraintStart_toStartOf="@+id/date_custom_view"
+                app:layout_constraintTop_toBottomOf="@+id/date_custom_view" />
 
             <TextView
-                android:id="@+id/zuerledigenbisText"
+                android:id="@+id/date_custom_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/titeltext" />
+                app:layout_constraintTop_toBottomOf="@+id/title_custom_view" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"

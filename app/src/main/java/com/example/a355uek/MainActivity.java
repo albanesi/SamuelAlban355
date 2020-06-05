@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private void openThePendenceActivity() {
         Intent intent= new Intent(this, PendenceActivity.class);
         startActivity(intent);
-        finish();
+        onStop();
     }
     //we initialise the recyclerview and the adapter
     // and then we set our adapter as the adapter of the recyclerview
